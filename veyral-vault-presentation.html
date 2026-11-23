@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Veyral Vault — your documents, sealed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--surface-000:#f6f3f1;--surface-100:#ffffff;--surface-200:#ebe6e4;--ink:#1b1419;--ink-2:#3c3138;--ink-muted:#6a5e66;--brand:#4a1d4e;--brand-soft:#ece0ec;--signal:#9a5a2e;--border:#e2dbd9}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--surface-000);color:var(--ink);font-family:"Instrument Sans","Helvetica Neue",Arial,sans-serif;overflow:hidden;-webkit-font-smoothing:antialiased}
+.deck{position:relative;width:100vw;height:100vh}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:1.4vh}
+.slide.active{display:flex}
+.kicker{font-size:1.3vh;text-transform:uppercase;letter-spacing:.26em;color:var(--brand);font-weight:600;margin-bottom:1.2vh;font-family:"Geist Mono",monospace}
+h1{font-family:"Hedvig Letters Serif",Georgia,serif;font-size:6.2vh;font-weight:400;letter-spacing:-.025em;line-height:1.02;max-width:84vw;color:var(--ink)}
+h2{font-family:"Hedvig Letters Serif",Georgia,serif;font-size:3.6vh;font-weight:400;letter-spacing:-.015em;line-height:1.12;max-width:86vw;color:var(--ink)}
+p{font-size:2.2vh;line-height:1.55;color:var(--ink-2);max-width:80vw}
+.muted{color:var(--ink-muted)}
+.row{display:flex;gap:2.2vw;margin-top:2.4vh;flex-wrap:wrap}
+.tile{background:var(--surface-100);border:1px solid var(--border);border-radius:10px;padding:2.4vh 2.2vw;flex:1;min-width:18vw;box-shadow:0 12px 24px -12px rgba(27,20,25,.35),0 2px 4px rgba(27,20,25,.08)}
+.tile .num{font-family:"Hedvig Letters Serif",Georgia,serif;font-size:3.4vh;font-weight:400;color:var(--brand);line-height:1}
+.tile .lbl{font-size:1.4vh;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.12em;margin-top:.8vh}
+ul{list-style:none;display:grid;gap:1.2vh;margin-top:1.8vh;max-width:82vw}
+li{font-size:2.2vh;line-height:1.4;padding-left:2.2vw;position:relative;color:var(--ink-2)}
+li::before{content:"";position:absolute;left:0;top:1.1vh;width:.8vw;height:2px;background:var(--brand)}
+.levels{display:flex;gap:1.6vw;margin-top:2.4vh;flex-wrap:wrap}
+.level{flex:1;min-width:20vw;background:var(--surface-100);border:1px solid var(--border);border-radius:10px;padding:2.4vh 2vw;text-align:center;box-shadow:0 12px 24px -12px rgba(27,20,25,.35),0 2px 4px rgba(27,20,25,.08)}
+.level .name{font-family:"Hedvig Letters Serif",Georgia,serif;font-size:2.4vh;font-weight:400;color:var(--brand);margin-bottom:.6vh}
+.level .desc{font-size:1.6vh;color:var(--ink-muted);line-height:1.4}
+.callout{border-left:3px solid var(--brand);padding:1.6vh 2vw;margin-top:2vh;background:var(--brand-soft);border-radius:0 10px 10px 0;max-width:78vw}
+.callout p{font-size:2vh;color:var(--ink)}
+.bar{position:fixed;bottom:2.4vh;left:8vw;right:8vw;display:flex;justify-content:space-between;align-items:center;font-size:1.3vh;color:var(--ink-muted)}
+.bar .dots{display:flex;gap:.5vw}
+.bar .dot{width:.8vh;height:.8vh;border-radius:50%;background:var(--border)}
+.bar .dot.active{background:var(--brand)}
+.hint{position:fixed;top:2.4vh;right:3vw;font-size:1.3vh;color:var(--ink-muted)}
+.logo{font-weight:700;font-size:1.7vh;letter-spacing:.08em;color:var(--brand)}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<section class="slide active">
+  <div class="kicker">Veyral · the document hoard</div>
+  <h1>Your documents. Sealed. Only what you may see comes back.</h1>
+  <p class="muted">Veyral Vault stores, organises, versions and shares a company's files — and its own AI librarian answers from the files a requester may see, with sources.</p>
+</section>
+
+<section class="slide">
+  <div class="kicker">The problem</div>
+  <h2>Documents leak. Access rules get lost. AI sees everything.</h2>
+  <p>Most systems hand the model the whole archive and hope the prompt is enough. It is not. The vault decides, in code, what each person, product or agent may read — and gives the model only that.</p>
+</section>
+
+<section class="slide">
+  <div class="kicker">The answer</div>
+  <h2>One sentence.</h2>
+  <div class="callout"><p>"The vault decides, in code, what each person, product or agent may read, and gives the model only that — with three levels per document: nothing, cleaned, or full."</p></div>
+  <p class="muted" style="margin-top:2vh">Everything else is a detail of that sentence, or a later phase.</p>
+</section>
+
+<section class="slide">
+  <div class="kicker">The core idea</div>
+  <h2>Three levels on every document.</h2>
+  <div class="levels">
+    <div class="level"><div class="name">None</div><div class="desc">Not listed. Never used in an answer.</div></div>
+    <div class="level"><div class="name">View-only</div><div class="desc">Watermarked preview. No download. The librarian may answer from it.</div></div>
+    <div class="level"><div class="name">Full</div><div class="desc">Open, download, answer.</div></div>
+  </div>
+  <p class="muted" style="margin-top:2vh">A fourth level — cleaned — exists where the cleaning extra is on: names, amounts and IDs removed from answers and copies.</p>
+</section>
+
+<section class="slide">
+  <div class="kicker">How it works</div>
+  <h2>Four steps. Every request. Every door.</h2>
+  <ul>
+    <li><strong>Who is asking</strong> — a person, a product or an agent, with a level.</li>
+    <li><strong>What they may see</strong> — decided in code, before the model.</li>
+    <li><strong>The model gets only that</strong> — chunks, never the archive.</li>
+    <li><strong>The answer, with sources</strong> — and an audit line, without storing the answer.</li>
+  </ul>
+  <p class="muted" style="margin-top:2vh">The same pipeline for the UI, the MCP door and the REST API. No second path.</p>
+</section>
+
+<section class="slide">
+  <div class="kicker">The judge</div>
+  <h2>JEV — local AI that checks the answer.</h2>
+  <p>A set of local models that route the question, rerank the search, ground every sentence in its source, and screen for hidden instructions. Without it, the vault falls back to word-match and says so.</p>
+  <div class="row">
+    <div class="tile"><div class="num">Route</div><div class="lbl">what kind of question</div></div>
+    <div class="tile"><div class="num">Judge</div><div class="lbl">rerank and ground</div></div>
+    <div class="tile"><div class="num">Screen</div><div class="lbl">hidden instructions</div></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="kicker">What makes it different</div>
+  <h2>Access in code, not in prompts.</h2>
+  <ul>
+    <li>The policy filter runs before retrieval. The librarian never receives a chunk the requester may not see.</li>
+    <li>Levels are relations, not flags. reader_full ⊃ reader_redacted ⊃ nothing.</li>
+    <li>Every access is recorded. The answer itself is not stored — a hash and the metadata.</li>
+    <li>Cleaning is pattern- and model-based, and will miss entities. It reduces risk; it does not eliminate it.</li>
+  </ul>
+</section>
+
+<section class="slide">
+  <div class="kicker">Your keys, your rules</div>
+  <h2>A vault is one client's sealed store.</h2>
+  <ul>
+    <li>One directory per vault. Copied and raised again on another server. No shared database, no shared key.</li>
+    <li>Nothing binds publicly. Every service binds to localhost; a name is published by the host's proxy.</li>
+    <li>Append, never rewrite. A corrected paper keeps its old text under a dated heading.</li>
+    <li>Your keys, your host, your model — or ours, declared and accepted per client.</li>
+  </ul>
+</section>
+
+<section class="slide">
+  <div class="kicker">What you can do</div>
+  <h2>Ask, share, audit, import.</h2>
+  <div class="row">
+    <div class="tile"><div class="num">Ask</div><div class="lbl">questions, with sources</div></div>
+    <div class="tile"><div class="num">Share</div><div class="lbl">a level, per person or product</div></div>
+    <div class="tile"><div class="num">Audit</div><div class="lbl">every access, without the answer</div></div>
+    <div class="tile"><div class="num">Import</div><div class="lbl">from the systems you have</div></div>
+  </div>
+  <p class="muted" style="margin-top:2vh">UI, MCP and REST — the same door, the same rules.</p>
+</section>
+
+<section class="slide">
+  <div class="kicker">Live today</div>
+  <h2>Running and measured</h2>
+  <div class="row">
+    <div class="tile"><div class="num">5 521</div><div class="lbl">documents in the live vault</div></div>
+    <div class="tile"><div class="num">18</div><div class="lbl">schema migrations applied</div></div>
+    <div class="tile"><div class="num">3 907</div><div class="lbl">vault usage rows counted</div></div>
+  </div>
+  <p class="muted" style="margin-top:2vh">Sign-in card: "Logga in i Veyral Vault". Restore tested on a copy before going live.</p>
+</section>
+
+<section class="slide">
+  <div class="kicker">What is open</div>
+  <h2>The honest list</h2>
+  <ul>
+    <li>Encryption keys are stored on the server today; moving them into a key store is next.</li>
+    <li>Access grants are kept in a ledger that is checked on every request.</li>
+    <li>The card's words and picture are drafts, pending validation.</li>
+    <li>Older link previews are cached until refreshed.</li>
+  </ul>
+  <p class="muted" style="margin-top:3vh">Veyral Consulting AB · Veyral Vault is Veyral's product.</p>
+</section>
+
+</div>
+<div class="bar">
+  <span class="logo">VEYRAL VAULT</span>
+  <div class="dots" id="dots"></div>
+  <span id="counter">1 / 12</span>
+</div>
+<div class="hint">← → or space to move</div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+const dots=document.getElementById('dots');
+slides.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');dots.appendChild(d)});
+let i=0;
+function show(n){slides[i].classList.remove('active');dots.children[i].classList.remove('active');i=(n+slides.length)%slides.length;slides[i].classList.add('active');dots.children[i].classList.add('active');document.getElementById('counter').textContent=(i+1)+' / '+slides.length}
+addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();show(i+1)}if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1)}});
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Atlas — the assistant for a small company</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--surface-000:#f6f3f1;--surface-100:#ffffff;--surface-200:#ebe6e4;--ink:#1b1419;--ink-2:#3c3138;--ink-muted:#6a5e66;--brand:#4a1d4e;--brand-soft:#ece0ec;--signal:#9a5a2e;--border:#e2dbd9}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--surface-000);color:var(--ink);font-family:"Instrument Sans","Helvetica Neue",Arial,sans-serif;overflow:hidden;-webkit-font-smoothing:antialiased}
+.deck{position:relative;width:100vw;height:100vh}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:7vh 9vw;gap:1.6vh}
+.slide.active{display:flex}
+.kicker{font-size:1.3vh;text-transform:uppercase;letter-spacing:.26em;color:var(--brand);font-weight:600;margin-bottom:1.2vh;font-family:"Geist Mono",monospace}
+h1{font-family:"Hedvig Letters Serif",Georgia,serif;font-size:6vh;font-weight:400;letter-spacing:-.02em;line-height:1.05;max-width:84vw;color:var(--ink)}
+h2{font-family:"Hedvig Letters Serif",Georgia,serif;font-size:3.6vh;font-weight:400;letter-spacing:-.015em;line-height:1.15;max-width:86vw;color:var(--ink)}
+p{font-size:2.2vh;line-height:1.55;color:var(--ink-2);max-width:78vw}
+.muted{color:var(--ink-muted)}
+.row{display:flex;gap:2.2vw;margin-top:2.4vh;flex-wrap:wrap}
+.tile{background:var(--surface-100);border:1px solid var(--border);border-radius:10px;padding:2.4vh 2.2vw;flex:1;min-width:18vw;box-shadow:0 12px 24px -12px rgba(27,20,25,.35),0 2px 4px rgba(27,20,25,.08)}
+.tile .num{font-family:"Hedvig Letters Serif",Georgia,serif;font-size:3.6vh;font-weight:400;color:var(--brand);line-height:1}
+.tile .lbl{font-size:1.4vh;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.12em;margin-top:.8vh}
+ul{list-style:none;display:grid;gap:1.2vh;margin-top:1.8vh;max-width:82vw}
+li{font-size:2.2vh;line-height:1.4;padding-left:2.2vw;position:relative;color:var(--ink-2)}
+li::before{content:"";position:absolute;left:0;top:1.1vh;width:.8vw;height:2px;background:var(--brand)}
+.callout{border-left:3px solid var(--brand);padding:1.6vh 2vw;margin-top:2vh;background:var(--brand-soft);border-radius:0 10px 10px 0;max-width:78vw}
+.callout p{font-size:2vh;color:var(--ink)}
+.bar{position:fixed;bottom:2.4vh;left:8vw;right:8vw;display:flex;justify-content:space-between;align-items:center;font-size:1.3vh;color:var(--ink-muted)}
+.bar .dots{display:flex;gap:.5vw}
+.bar .dot{width:.8vh;height:.8vh;border-radius:50%;background:var(--border)}
+.bar .dot.active{background:var(--brand)}
+.hint{position:fixed;top:2.4vh;right:3vw;font-size:1.3vh;color:var(--ink-muted)}
+.logo{font-weight:700;font-size:1.7vh;letter-spacing:.08em;color:var(--brand)}
+
+</style>
+</head>
+<body>
+<div class="deck">
+
+<section class="slide active">
+  <div class="kicker">Veyral · Atlas family</div>
+  <h1>One assistant. One sign-in. Everything your company runs on.</h1>
+  <p class="muted">Atlas is a business assistant for a small company — not a developer tool. Typed or spoken, in Swedish or English.</p>
+</section>
+
+<section class="slide">
+  <div class="kicker">The problem</div>
+  <h2>Receipts, books, documents and people live in five places.</h2>
+  <p>Atlas puts them in one place, behind one sign-in, with an assistant that works on them.</p>
+</section>
+
+<section class="slide">
+  <div class="kicker">What Atlas is</div>
+  <h2>Four things, one sign-in</h2>
+  <ul>
+    <li><strong>Atlas</strong> — the assistant you talk to.</li>
+    <li><strong>The desk</strong> — invoices, receipts, books, calendar, to-dos, templates.</li>
+    <li><strong>The shelf</strong> — what you owe, what others owe you, the morning brief.</li>
+    <li><strong>The vault</strong> — the company's documents, sealed, access decided in code.</li>
+  </ul>
+</section>
+
+<section class="slide">
+  <div class="kicker">The shelf</div>
+  <h2>Sessions on the left. The thing in the centre. Atlas on the right.</h2>
+  <p>Sheets, workbooks, documents and tasks — each a "thing" you open, share, compare and export. Atlas writes cells, formats as kronor, opens any page, points at a cell, speaks a line.</p>
+  <div class="callout"><p>Every company on its own store. Every live update stays inside the company — proven, not claimed.</p></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">Voice</div>
+  <h2>Atlas talks while it works.</h2>
+  <p>Swedish and English. A line on every action, spoken aloud, shown as a caption beside Atlas's pointer. Muted by a setting, or by the person.</p>
+</section>
+
+<section class="slide">
+  <div class="kicker">AI allowance</div>
+  <h2>Credits, not tokens. You always know what it costs.</h2>
+  <div class="row">
+    <div class="tile"><div class="num">1 credit</div><div class="lbl">= $0.01, one unit of cost</div></div>
+    <div class="tile"><div class="num">4 plans</div><div class="lbl">Start · Company · Byrå · Own box</div></div>
+  </div>
+  <p class="muted" style="margin-top:2vh">Notices at 80 % and 100 %. A client's own AI key draws no credits. Counted in every place AI is used.</p>
+</section>
+
+<section class="slide">
+  <div class="kicker">How it is built</div>
+  <h2>One runtime. Many products. Nothing re-implemented.</h2>
+  <ul>
+    <li><strong>base</strong> — the agent loop, tools, transports, the MCP server atlas-tools.</li>
+    <li><strong>server</strong> — the host: doors, voice, memory, tests.</li>
+    <li><strong>shelf</strong> — tasks, steps, waiting items, blocks, the approval broker.</li>
+    <li><strong>receipts</strong> — invoices, OCR, seven years of keeping, booking.</li>
+  </ul>
+  <p class="muted" style="margin-top:2vh">Atlas is a business assistant first. No developer word on any default surface.</p>
+</section>
+
+<section class="slide">
+  <div class="kicker">Live today</div>
+  <h2>Running and measured</h2>
+  <div class="row">
+    <div class="tile"><div class="num">125</div><div class="lbl">tools from one Atlas turn, zero failed</div></div>
+    <div class="tile"><div class="num">10</div><div class="lbl">services, all healthy</div></div>
+    <div class="tile"><div class="num">1</div><div class="lbl">sign-in for everything</div></div>
+  </div>
+  <p class="muted" style="margin-top:2vh">The shelf is a place inside Atlas. The vault counts its work into Atlas's usage report.</p>
+</section>
+
+<section class="slide">
+  <div class="kicker">What is open</div>
+  <h2>The honest list</h2>
+  <ul>
+    <li>No mail door connected yet — "what I owe" reads stand-ins.</li>
+    <li>No calendar source for the morning page.</li>
+    <li>Sharing records shares; hiding things waits for people and grants.</li>
+    <li>Swedish voice on a host that speaks without the pod's voicebox.</li>
+    <li>All new visible words wait for validation.</li>
+  </ul>
+  <p class="muted" style="margin-top:3vh">Veyral Consulting AB · Atlas is Veyral's product.</p>
+</section>
+
+</div>
+<div class="bar">
+  <span class="logo">ATLAS</span>
+  <div class="dots" id="dots"></div>
+  <span id="counter">1 / 9</span>
+</div>
+<div class="hint">← → or space to move</div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+const dots=document.getElementById('dots');
+slides.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');dots.appendChild(d)});
+let i=0;
+function show(n){slides[i].classList.remove('active');dots.children[i].classList.remove('active');i=(n+slides.length)%slides.length;slides[i].classList.add('active');dots.children[i].classList.add('active');document.getElementById('counter').textContent=(i+1)+' / '+slides.length}
+addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();show(i+1)}if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1)}});
+</script>
+</body>
+</html>
